@@ -2,6 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>SeleniumTestDemo</groupId>
   <artifactId>SeleniumTestDemo</artifactId>
+	<packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>			
         <dependency>				
@@ -60,6 +61,24 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
+			 <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>2.6</version>
+    <configuration>
+     <!-- Use this to include a selection of jars that will be included in the WAR -->
+        <!--   <packagingIncludes>**/*.xml,**/*.properties,**/*.class,**/*.png,**/*.css,**/*.js,**/*.jsp</packagingIncludes> -->
+        <warSourceDirectory>WebContent</warSourceDirectory>
+     <webXml>WebContent/WEB-INF/web.xml</webXml>
+     <failOnMissingWebXml>false</failOnMissingWebXml>
+     <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+            </manifest>
+          </archive>
+    </configuration>
+   </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
